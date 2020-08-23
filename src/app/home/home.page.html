@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Kullanıcı Not
+    </ion-title>
+  </ion-toolbar>
+  <ion-button style="padding-left: 60%;" (click)="openToDoFormforSaving()"
+    >Yeni Not Ekle</ion-button
+  >
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="formAddStatus">
+    <ion-item>
+      <ion-label>Not: </ion-label>
+      <ion-input
+        [(ngModel)]="userNote"
+        placeholder="Not"
+      ></ion-input>
+    </ion-item>
+    <ion-button style="padding-left: 80%;" (click)="saveUserNote()"
+      >Kaydet</ion-button
+    >
+  </ion-card>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Kullanıcı Not</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+
+  <!-- List of Text Items -->
+  <div *ngIf="!formAddStatus">
+    <ion-list *ngFor="let item of (results | async)">
+      <ion-item>
+        <ion-label>{{item.title}}</ion-label> 
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
